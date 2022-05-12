@@ -11,8 +11,16 @@
 
 namespace markdownLang;
 
+class PrintRule : Rule {
+    public override List<string> Process(List<string> lines) {
+        lines.ForEach(Console.WriteLine);
+        return lines;
+    }
+}
+
 class MainClass {
     public static void Main(String[] args) {
-        Console.WriteLine("YOSDUASDAS");
+        RulesHolder.Instance.AddRule(new PrintRule());
+        new FileProcessor("G:/Programming/c#/markdownLang/markdownLang/test.txt").Process();
     }
 }
